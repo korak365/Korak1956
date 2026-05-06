@@ -1,0 +1,63 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "repoName": {
+            "type": "string",
+            "description": "Full repo name (owner/repo)"
+        },
+        "repoUrl": {
+            "type": "string",
+            "description": "Repository URL"
+        },
+        "description": {
+            "type": "string",
+            "description": "Repository description (if present)"
+        },
+        "stars": {
+            "type": "integer",
+            "description": "Star count (best-effort)"
+        },
+        "forks": {
+            "type": "integer",
+            "description": "Fork count (best-effort)"
+        },
+        "language": {
+            "type": "string",
+            "description": "Primary language"
+        },
+        "matchedFiles": {
+            "type": "array",
+            "description": "List of matched filenames found in the repository"
+        },
+        "matchedDependencies": {
+            "type": "array",
+            "description": "Dependencies extracted from package.json/requirements.txt/etc. (best-effort)"
+        },
+        "host": {
+            "type": "string",
+            "description": "Host where repo was found (github.com or gitlab.com)"
+        },
+        "timestamp": {
+            "type": "string",
+            "description": "When this item was collected (ISO 8601)"
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Repositories Overview",
+            "transformation": {
+                "fields": ["repoName", "stars", "language", "matchedFiles", "repoUrl"]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "repoName": { "label": "Repository", "format": "link" },
+                    "stars": { "label": "Stars", "format": "number" },
+                    "language": { "label": "Language", "format": "text" },
+                    "matchedFiles": { "label": "Matched files", "format": "array" },
+                    "repoUrl": { "label": "URL", "format": "link" }
+                }
+            }
+        }
+    }
+}

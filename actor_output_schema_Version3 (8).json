@@ -1,0 +1,21 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Output of Code-Base Crawler",
+    "properties": {
+        "overview": {
+            "type": "string",
+            "title": "Repositories Dataset",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "itemCount": {
+            "type": "number",
+            "title": "Repositories collected",
+            "template": "{{run.usageInfo.items}}"
+        },
+        "crawledUrls": {
+            "type": "number",
+            "title": "Pages crawled",
+            "template": "{{run.usageInfo.requests}}"
+        }
+    }
+}

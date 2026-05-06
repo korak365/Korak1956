@@ -1,0 +1,63 @@
+{
+    "title": "Input schema for Code-Base Crawler",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Start URLs",
+            "type": "array",
+            "description": "Search pages or repository listing pages on GitHub/GitLab to start from.",
+            "editor": "requestListSources",
+            "prefill": [
+                { "url": "https://github.com/search?q=express+middleware&type=Repositories" },
+                { "url": "https://gitlab.com/search?search=express&group_id=&project_id=&snippets=false&repository_ref=" }
+            ]
+        },
+        "repoQuery": {
+            "title": "Repository Query (optional)",
+            "type": "string",
+            "description": "Optional free-text query to filter repositories (if not using startUrls).",
+            "default": ""
+        },
+        "maxRequestsPerCrawl": {
+            "title": "Max Requests per Crawl",
+            "type": "integer",
+            "description": "Maximum number of pages to crawl.",
+            "default": 500,
+            "minimum": 1,
+            "maximum": 10000
+        },
+        "minStars": {
+            "title": "Minimum Stars",
+            "type": "integer",
+            "description": "Only collect repositories with at least this many stars (best-effort).",
+            "default": 50,
+            "minimum": 0
+        },
+        "languages": {
+            "title": "Languages",
+            "type": "array",
+            "description": "Preferred programming languages to prioritize.",
+            "default": ["JavaScript", "Python"]
+        },
+        "includeForks": {
+            "title": "Include Forks",
+            "type": "boolean",
+            "description": "Whether to include forked repositories.",
+            "default": false
+        },
+        "scanFiles": {
+            "title": "Scan Files",
+            "type": "array",
+            "description": "File names/paths to look for inside repositories (package.json, requirements.txt, Dockerfile, etc.).",
+            "default": ["package.json", "requirements.txt", "pyproject.toml", "setup.py", "Dockerfile"]
+        },
+        "siteAllowList": {
+            "title": "Site allow list",
+            "type": "array",
+            "description": "If set, only follow links inside these hostnames.",
+            "default": ["github.com", "gitlab.com"]
+        }
+    },
+    "required": []
+}
